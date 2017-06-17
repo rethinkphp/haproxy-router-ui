@@ -1,4 +1,3 @@
-<!-- src/components/Hello.vue -->
 <template>
     <div>
         <div v-for="service in services">
@@ -13,7 +12,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Api, Service } from 'api'
 
 @Component
-export default class App extends Vue {
+export default class Dashboard extends Vue {
     @Prop() name: string
     @Prop() initialEnthusiasm: number 
 

@@ -1,15 +1,15 @@
 import Vue from "vue";
-import HelloComponent from "./components/Hello.vue";
+import VueRouter from 'vue-router'
+import router from './router'
+
+Vue.use(VueRouter)
 
 let v = new Vue({
+    router,
     el: "#app",
     template: `
     <div>
-        <hello-component :name="name" :initialEnthusiasm="5" />
+        <router-view></router-view>
     </div>
-    `,
-    data: { name: "World" },
-    components: {
-        HelloComponent
-    }
+    `
 });
