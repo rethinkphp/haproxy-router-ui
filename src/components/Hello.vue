@@ -9,8 +9,7 @@
 
 <script lang="ts">
 
-import { Component, Inject, Model, Prop, Vue, Watch } from 'vue-property-decorator'
-import Axios from 'axios'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Service } from 'models'
 import Api from 'api'
 
