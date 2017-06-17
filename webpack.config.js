@@ -2,6 +2,10 @@
 var path = require('path')
 var webpack = require('webpack')
 
+function srcPath(subdir) {
+    return path.join(__dirname, "src", subdir);
+}
+
 module.exports = {
   entry: './src/index.ts',
   output: {
@@ -45,7 +49,9 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js', '.vue', '.json'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm.js',
+      models: srcPath('models'),
+      api: srcPath('api')
     }
   },
   devServer: {

@@ -1,39 +1,31 @@
 <!-- src/components/Hello.vue -->
 <template>
     <div>
-        <div class="greeting">Hello {{name}}{{exclamationMarks}}</div>
-        <button @click="decrement">-</button>
-        <button @click="increment">+</button>
+        <div v-for="service in services">
+            {{service.id}} - {{service.name}}
+        </div>
     </div>
 </template>
 
 <script lang="ts">
 
 import { Component, Inject, Model, Prop, Vue, Watch } from 'vue-property-decorator'
+import Axios from 'axios'
+import { Service } from 'models'
+import Api from 'api'
 
 @Component
 export default class App extends Vue {
     @Prop() name: string
     @Prop() initialEnthusiasm: number 
 
-    enthusiasmm = this.initialEnthusiasm
+    services: Array<Service> = []
 
-    ready() {
-        console.log(this.initialEnthusiasm)
-    }
-
-    increment() { 
-        this.enthusiasmm++; 
-    }
-
-    decrement() {
-        if (this.enthusiasmm > 1) {
-            this.enthusiasmm--;
-        }
-    }
-    
-    get exclamationMarks(): string {
-        return Array(this.enthusiasmm + 1).join('!');
+    mounted() {
+        Api
+            .getServices()
+            .then(services => this.services = services)
+       ;
     }
 }
 </script>

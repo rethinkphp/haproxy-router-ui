@@ -1,5 +1,11 @@
 {
     "compilerOptions": {
+        "baseUrl": "src",
+        "paths": {
+            "models": ["models"],
+            "models/*": ["models/*"],
+            "api/*": ["api/*"]
+        },
         "outDir": "./built/",
         "sourceMap": true,
         "strict": true,
