@@ -1,6 +1,6 @@
 import Axios from 'axios'
 
-import { Service } from 'models'
+import Service from 'models/Service'
 
 declare var API_ENDPOINT: string
 

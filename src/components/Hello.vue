@@ -10,8 +10,7 @@
 <script lang="ts">
 
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { Service } from 'models'
-import Api from 'api'
+import { Api, Service } from 'api'
 
 @Component
 export default class App extends Vue {
