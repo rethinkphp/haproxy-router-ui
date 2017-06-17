@@ -20,11 +20,8 @@ export default class App extends Vue {
 
     services: Array<Service> = []
 
-    mounted() {
-        Api
-            .getServices()
-            .then(services => this.services = services)
-       ;
+    async mounted() {
+        this.services = await Api.getServices()
     }
 }
 </script>

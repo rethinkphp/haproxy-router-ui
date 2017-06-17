@@ -2,16 +2,18 @@ import Axios from 'axios'
 
 import { Service } from 'models'
 
+declare var API_ENDPOINT: string
+
 /**
  * The Api class 
  * 
  */
 export default class Api {
-    static baseUrl = 'http://gw.rethinkphp.me'
+    static baseUrl = API_ENDPOINT
 
-    static getServices(): Promise<Array<Service>> {
-        return Axios
-            .get(this.baseUrl + '/services')
-            .then(response => response.data.map(Service.populate))
+    static async getServices(): Promise<Array<Service>> {
+        let response = await Axios.get(this.baseUrl + '/services')
+
+        return response.data.map(Service.populate)
     }
 }
