@@ -8,9 +8,7 @@ export default class Service extends Object {
     static populate(data: any): Service {
         let service = Object.create(Service.prototype)
 
-        for (let i in data) {
-            service[i] = data[i]
-        }
+        Object.assign(service, data)
 
         return service;
     }
