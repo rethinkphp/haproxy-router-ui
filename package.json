@@ -13,11 +13,13 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.16.2",
+    "stylus": "^0.54.5",
     "vue": "2.2.6",
     "vue-router": "2.5.3"
   },
   "devDependencies": {
     "css-loader": "^0.28.1",
+    "stylus-loader": "^3.0.1",
     "ts-loader": "^2.0.3",
     "typescript": "^2.3.2",
     "vue-class-component": "^5.0.1",
