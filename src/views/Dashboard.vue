@@ -7,15 +7,15 @@
         <div class="page-content">
             <div v-for="service in services" class="content-row">
                 <div class="info">
-                    <router-link :to="{name: 'service.view', params: {id: service.name}}" class="name">{{service.name}}</router-link>
-                    <span class="desc">API services for all other systems</span>
+                    <router-link :to="{name: 'service.edit', params: {id: service.name}}" class="name">{{service.name}}</router-link>
+                    <span class="desc">{{service.description || 'No description for this service'}}</span>
                 </div>
             </div>
         </div>
     </div>
 </template>
 <style lang="stylus">
-@require "../styles/variables.styl"
+@require "../styles/variables"
 
 .page-title {
     font-size: 20px;

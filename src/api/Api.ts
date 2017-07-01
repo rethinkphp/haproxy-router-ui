@@ -16,4 +16,22 @@ export default class Api {
 
         return response.data.map(Service.populate)
     }
+
+    static async saveService(service: Service): Promise<Service> {
+        let response;
+
+        if (!service.id) {
+            response = await Axios.post(this.baseUrl + '/services', service)
+        } else {
+            response = await Axios.put(this.baseUrl + '/services/' + service.name, service)
+        }
+
+        return Service.populate(response.data)
+    }
+
+    static async loadService(id: string): Promise<Service> {
+        let response = await Axios.get(this.baseUrl + '/services/' + id)
+
+        return Service.populate(response.data)
+    }
 }
