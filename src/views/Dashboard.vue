@@ -23,32 +23,37 @@
     padding: 10px 0;
     margin-top: 20px;
     border-bottom: solid 1px bgLightColor1;
+
+    a {
+        float: right;
+        background-color: mainColor;
+        color: white;
+        font-size: 16px;
+        padding: 3px 10px;
+        border-radius: 5px; 
+    }
 }
-.page-title > a {
-    float: right;
-    background-color: mainColor;
-    color: white;
-    font-size: 16px;
-    padding: 3px 10px;
-    border-radius: 5px; 
-}
+
 .page-content {
     margin-top: 30px;
 }
+
 .content-row {
     height: 75px;
     background: bgLightColor3;
     margin-top: 20px;
     padding: 5px 20px;
-}
-.content-row > .info .name {
-    display: inline-block;
-    width: 150px;
-    color: fontColor1;
-    font-size: 16px;
-}
-.content-row > .info .desc {
-    color: fontColor3;
+    .info {
+        .name {
+            display: inline-block;
+            width: 150px;
+            color: fontColor1;
+            font-size: 16px;
+        }
+        .desc {
+            color: fontColor3;
+        }
+    }
 }
 </style>
 
