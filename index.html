@@ -4,7 +4,44 @@
 <body>
     <div id="app"></div>
 </body>
+<style>
+    /** begin normalize **/
+    html {
+        line-height: 1.15; /* 1 */
+        -ms-text-size-adjust: 100%; /* 2 */
+        -webkit-text-size-adjust: 100%; /* 2 */
+    }
+    body {
+        margin: 0;
+        font-size: 14px;
+    }
+    a {
+        background-color: transparent; /* 1 */
+        text-decoration: none;
+        -webkit-text-decoration-skip: objects; /* 2 */
+    }
+    /** end normalize **/
 
+    header {
+        height: 50px;
+        background: #F9F9F9;
+        border-bottom: solid #F0F0F0 1px;
+    }
+    header .header-inner {
+        width: 960px;
+        margin: 0 auto;
+    }
+    header .logo {
+        font-size: 24px;
+        font-weight: 500;
+        color: #0BA280;
+        line-height: 50px;
+    }
+    main .main-inner {
+        width: 960px;
+        margin: 0 auto;
+    }
+</style>
 <script>API_ENDPOINT='http://gw.rethinkphp.me'</script>
 <script src="./dist/build.js"></script>
 

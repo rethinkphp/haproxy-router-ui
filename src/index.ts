@@ -9,7 +9,14 @@ let v = new Vue({
     el: "#app",
     template: `
     <div>
-        <router-view></router-view>
+        <header>
+            <div class="header-inner">
+                <router-link to="/" class="logo">HAProxy Router</router-link>
+            </div>
+        </header>
+        <main>
+            <router-view></router-view>
+        </main>
     </div>
     `
 });
