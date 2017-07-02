@@ -14,7 +14,7 @@
         </div>
     </div>
 </template>
-<style lang="stylus">
+<style lang="stylus" scoped>
 @require "../styles/variables"
 
 .page-title {
@@ -47,7 +47,7 @@
         .name {
             display: inline-block;
             width: 150px;
-            color: fontColor1;
+            color: mainColor;
             font-size: 16px;
         }
         .desc {
@@ -69,6 +69,7 @@ export default class Dashboard extends Vue {
     services: Array<Service> = []
 
     async mounted() {
+        document.title = 'Dashboard - HAProxy Router'
         this.services = await Api.getServices()
     }
 }

@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-
+<title>HAProxy Router</title>
 <body>
     <div id="app"></div>
 </body>
@@ -48,6 +48,11 @@
         margin: 0 auto;
     }
 </style>
+<script>
+    document.changeTitle = function (title) {
+        document.title = title + ' - HAProxy Router'
+    };
+</script>
 <script>API_ENDPOINT='http://gw.rethinkphp.me'</script>
 <script src="./dist/build.js"></script>
 

@@ -1,6 +1,8 @@
 import Axios from 'axios'
 
 import Service from 'models/Service'
+import Route from 'models/Route'
+import Node from 'models/Node'
 
 declare var API_ENDPOINT: string
 
@@ -33,5 +35,53 @@ export default class Api {
         let response = await Axios.get(this.baseUrl + '/services/' + id)
 
         return Service.populate(response.data)
+    }
+
+    static async deleteService(id: string) {
+        await Axios.delete(this.baseUrl + '/services/' + id)
+    }
+
+    static async getRoutes(serviceId: string) {
+        let response = await Axios.get(this.baseUrl + '/services/' + serviceId + '/routes')
+
+        return response.data.map(Route.populate)
+    }
+
+    static async saveRoute(serviceId: string, route: Route) {
+        let response
+
+        if (route.id) {
+            response = await Axios.put(this.baseUrl + '/services/' + serviceId + '/routes/' + route.name, route)
+        } else {
+            response = await Axios.post(this.baseUrl + '/services/' + serviceId + '/routes', route)
+        }
+
+        return Route.populate(response.data)
+    }
+
+    static async deleteRoute(serviceId: string, route: Route) {
+        await Axios.delete(this.baseUrl + '/services/' + serviceId + '/routes/' + route.name)
+    }
+
+    static async getNodes(serviceId: string) {
+        let response = await Axios.get(this.baseUrl + '/services/' + serviceId + '/nodes')
+
+        return response.data.map(Node.populate)
+    }
+
+    static async saveNode(serviceId: string, node: Node) {
+        let response
+
+        if (node.id) {
+            response = await Axios.put(this.baseUrl + '/services/' + serviceId + '/nodes/' + node.name, node)
+        } else {
+            response = await Axios.post(this.baseUrl + '/services/' + serviceId + '/nodes', node)
+        }
+
+        return Node.populate(response.data)
+    }
+
+    static async deleteNode(serviceId: string, node: Node) {
+        await Axios.delete(this.baseUrl + '/services/' + serviceId + '/nodes/' + node.name)
     }
 }
