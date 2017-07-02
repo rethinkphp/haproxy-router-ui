@@ -3,6 +3,7 @@ import Dashboard from "./views/Dashboard.vue";
 import EditService from "./views/EditService.vue";
 
 let router = new VueRouter({
+  mode: 'history',
   routes: [
     {path: '/', component: Dashboard, name: 'home'},
     {path: '/services/new', component: EditService, name: 'service.new'},
