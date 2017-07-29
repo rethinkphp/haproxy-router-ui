@@ -25,7 +25,7 @@ export default class Api {
         if (!service.id) {
             response = await Axios.post(this.baseUrl + '/services', service)
         } else {
-            response = await Axios.put(this.baseUrl + '/services/' + service.name, service)
+            response = await Axios.put(this.baseUrl + '/services/' + service.id, service)
         }
 
         return Service.populate(response.data)
@@ -51,7 +51,7 @@ export default class Api {
         let response
 
         if (route.id) {
-            response = await Axios.put(this.baseUrl + '/services/' + serviceId + '/routes/' + route.name, route)
+            response = await Axios.put(this.baseUrl + '/services/' + serviceId + '/routes/' + route.id, route)
         } else {
             response = await Axios.post(this.baseUrl + '/services/' + serviceId + '/routes', route)
         }
@@ -60,7 +60,7 @@ export default class Api {
     }
 
     static async deleteRoute(serviceId: string, route: Route) {
-        await Axios.delete(this.baseUrl + '/services/' + serviceId + '/routes/' + route.name)
+        await Axios.delete(this.baseUrl + '/services/' + serviceId + '/routes/' + route.id)
     }
 
     static async getNodes(serviceId: string) {
@@ -73,7 +73,7 @@ export default class Api {
         let response
 
         if (node.id) {
-            response = await Axios.put(this.baseUrl + '/services/' + serviceId + '/nodes/' + node.name, node)
+            response = await Axios.put(this.baseUrl + '/services/' + serviceId + '/nodes/' + node.id, node)
         } else {
             response = await Axios.post(this.baseUrl + '/services/' + serviceId + '/nodes', node)
         }
@@ -82,6 +82,6 @@ export default class Api {
     }
 
     static async deleteNode(serviceId: string, node: Node) {
-        await Axios.delete(this.baseUrl + '/services/' + serviceId + '/nodes/' + node.name)
+        await Axios.delete(this.baseUrl + '/services/' + serviceId + '/nodes/' + node.id)
     }
 }

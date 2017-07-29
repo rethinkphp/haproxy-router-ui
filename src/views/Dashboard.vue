@@ -7,7 +7,7 @@
         <div class="page-content">
             <div v-for="service in services" class="content-row">
                 <div class="info">
-                    <router-link :to="{name: 'service.edit', params: {id: service.name}}" class="name">{{service.name}}</router-link>
+                    <router-link :to="{name: 'service.edit', params: {id: service.id}}" class="name">{{service.name}}</router-link>
                     <span class="desc">{{service.description || 'No description for this service'}}</span>
                 </div>
             </div>

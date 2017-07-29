@@ -357,11 +357,11 @@ export default class EditService extends Vue {
         try {
             let service = await Api.saveService(this.service)
 
-            this.routes.forEach(async route => await Api.saveRoute(service.name, route))
-            this.nodes.forEach(async node=> await Api.saveNode(service.name, node))
+            this.routes.forEach(async route => await Api.saveRoute(service.id, route))
+            this.nodes.forEach(async node=> await Api.saveNode(service.id, node))
 
-            this.deletedRoutes.forEach(async route => await Api.deleteRoute(service.name, route))
-            this.deletedNodes.forEach(async node => await Api.deleteNode(service.name, node))
+            this.deletedRoutes.forEach(async route => await Api.deleteRoute(service.id, route))
+            this.deletedNodes.forEach(async node => await Api.deleteNode(service.id, node))
 
             this.$router.replace('/')
         } catch (e) {
