@@ -12,6 +12,17 @@ let v = new Vue({
         <header>
             <div class="header-inner">
                 <router-link to="/" class="logo">HAProxy Router</router-link>
+                <ul class="navbar">
+                    <li>
+                        <router-link to="/" active-class="active" exact>Services</router-link>
+                    </li> 
+                    <li>
+                        <router-link to="/domains" active-class="active" exact>Domains</router-link>
+                    </li> 
+                    <li>
+                        <a href="/haproxy_stats" target="_blink">Stats</a>
+                    </li> 
+                </ul>
             </div>
         </header>
         <main>
