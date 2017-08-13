@@ -1,6 +1,7 @@
 import Axios from 'axios'
 
 import Service from 'models/Service'
+import Domain from 'models/Domain'
 import Route from 'models/Route'
 import Node from 'models/Node'
 
@@ -39,6 +40,34 @@ export default class Api {
 
     static async deleteService(id: string) {
         await Axios.delete(this.baseUrl + '/services/' + id)
+    }
+
+    static async getDomains(): Promise<Array<Domain>> {
+        let response = await Axios.get(this.baseUrl + '/domains')
+
+        return response.data.map(Domain.populate)
+    }
+
+    static async loadDomain(id: string): Promise<Domain> {
+        let response = await Axios.get(this.baseUrl + '/domains/' + id)
+
+        return Domain.populate(response.data)
+    }
+
+    static async saveDomain(domain: Domain): Promise<Domain> {
+        let response;
+
+        if (!domain.id) {
+            response = await Axios.post(this.baseUrl + '/domains', domain)
+        } else {
+            response = await Axios.put(this.baseUrl + '/domains/' + domain.id, domain)
+        }
+
+        return Domain.populate(response.data)
+    }
+
+    static async deleteDomain(id: string) {
+        await Axios.delete(this.baseUrl + '/domains/' + id)
     }
 
     static async getRoutes(serviceId: string) {
