@@ -8,23 +8,6 @@
             <a v-if="service.id" href="javascript:void(0)" @click="deleteService(service)" title="Remove the service">x</a>
         </div>
         <div class="page-content clearfix">
-            <ul class="sidenav">
-                <li v-bind:class="{active: isActive('basic')}"
-                    @click="currentTab='basic'"
-                >
-                    Basic
-                </li>
-                <li v-bind:class="{active: isActive('routes')}"
-                    @click="currentTab='routes'"
-                >
-                    Routes
-                </li>
-                <li v-bind:class="{active: isActive('nodes')}"
-                    @click="currentTab='nodes'"
-                >
-                    Nodes
-                </li>
-            </ul>
             <div class="body">
                 <div>
                     <h2>Basic</h2>
@@ -178,9 +161,8 @@ rightSpaceSize = 200px
 }
 .body {
     float left;
-    width: 960px - 180px - 50px;
+    width: 960px
     height: 100%
-    margin-left 220px
     overflow-y: auto 
     .group-control {
         label {
