@@ -3,12 +3,25 @@
     <div class="main-inner">
         <div class="page-title">
             <span v-if="domain.id">{{domain.name}}</span>
-             <a v-if="domain.id" href="javascript:void(0)" @click="deleteDomain(domain)" title="Remove the domain">x</a> 
+            <span v-else>New Domain</span>
+            <span v-if="!domain.id && domain.name"> - {{domain.name}}</span>
+            <a v-if="domain.id" href="javascript:void(0)" @click="deleteDomain(domain)" title="Remove the domain">x</a> 
         </div>
         <div class="page-content clearfix">
             <div class="body">
                 <div>
                     <h2>Basic</h2>
+                    <section class="group-control">
+                        <label for="name">Domain Name</label>
+                        <input 
+                            name="name" 
+                            type="text" 
+                            :disabled="!!domain.id"
+                            v-model="domain.name"
+                            autocomplete="off" 
+                            placeholder="The domain name"
+                        >
+                    </section>
                     <section class="group-control">
                         <label for="description">Description</label>
                         <textarea 
@@ -177,13 +190,16 @@ import { Api, Domain, Route, Node } from 'api'
 @Component
 export default class EditService extends Vue {
     @Prop() name: string
-    domain: Domain = new Domain()
+    domain: Domain = Domain.populate({tls_provider: 'manual'})
 
     async mounted() {
         let domainId = this.$route.params.id
-        this.domain = await Api.loadDomain(domainId)
-
-        document.title = this.domain.name + ' - HAProxy Router'
+        if (domainId) {
+            this.domain = await Api.loadDomain(domainId)
+            document.title = this.domain.name + ' - HAProxy Router'
+        } else {
+            document.title = 'New Domain - HAProxy Router'
+        }
     }
 
     async deleteDomain(domain: Domain) {

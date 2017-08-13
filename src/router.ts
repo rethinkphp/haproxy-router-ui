@@ -11,6 +11,7 @@ let router = new VueRouter({
     {path: '/services/new', component: EditService, name: 'service.new'},
     {path: '/services/:id', component: EditService, name: 'service.edit'},
     {path: '/domains', component: Domains, name: 'domains'},
+    {path: '/domains/new', component: EditDomain, name: 'domain.new'},
     {path: '/domains/:id', component: EditDomain, name: 'domain.edit'},
   ] 
 })

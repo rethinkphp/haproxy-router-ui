@@ -2,6 +2,7 @@
     <div class="main-inner">
         <div class="page-title">
             <span>All Domains ({{domains.length}})</span>
+            <router-link :to="{name: 'domain.new'}">New Domain</router-link>
         </div>
         <div class="page-content">
             <div v-for="domain in domains" class="content-row">
