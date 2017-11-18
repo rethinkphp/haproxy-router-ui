@@ -1,6 +1,7 @@
 
 var path = require('path')
 var webpack = require('webpack')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 function srcPath(subdir) {
     return path.join(__dirname, "src", subdir);
@@ -10,8 +11,8 @@ module.exports = {
   entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
-    filename: 'build.js'
+    publicPath: '/',
+    filename: '[name].[chunkhash].js'
   },
   module: {
     rules: [
@@ -63,6 +64,21 @@ module.exports = {
   },
   devtool: '#eval-source-map'
 }
+
+module.exports.plugins = [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'index.html',
+      inject: true,
+      chunks: ['main'],
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        // more options:
+        // https://github.com/kangax/html-minifier#options-quick-reference
+      },
+    }),
+];
 
 if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'

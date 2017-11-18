@@ -26,7 +26,8 @@
     "vue-loader": "^12.0.3",
     "vue-property-decorator": "^5.1.0",
     "vue-template-compiler": "2.2.6",
-    "webpack": "^2.5.0"
+    "webpack": "^2.5.0",
+    "html-webpack-plugin": "^2.8.1"
   },
   "repository": {
     "type": "git",

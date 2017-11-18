@@ -2,6 +2,14 @@
 <html>
 <title>HAProxy Router</title>
 <body>
+    <script>
+        document.changeTitle = function (title) {
+            document.title = title + ' - HAProxy Router'
+        };
+    </script>
+    <script>
+    API_ENDPOINT=location.protocol + '//' + location.host + '/api/v1'
+    </script>
     <div id="app"></div>
 </body>
 <style>
@@ -73,13 +81,4 @@
         margin: 0 auto;
     }
 </style>
-<script>
-    document.changeTitle = function (title) {
-        document.title = title + ' - HAProxy Router'
-    };
-</script>
-<script>
-API_ENDPOINT=location.protocol + '//' + location.host + '/api/v1'
-</script>
-<script src="/dist/build.js"></script>
 </html>
