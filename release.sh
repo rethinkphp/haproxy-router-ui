@@ -9,4 +9,4 @@ NODE_ENV=production npm run build || exit 1
 
 cd dist
 
-tar cf ui-$1.tar.gz index.html main.*
+tar czf ui-$1.tar.gz index.html main.*
