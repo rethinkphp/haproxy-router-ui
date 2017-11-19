@@ -7,6 +7,11 @@ fi
 
 NODE_ENV=production npm run build || exit 1
 
-cd dist
+package_name=haproxy-router-ui_$1
 
-tar czf ui-$1.tar.gz index.html main.*
+mkdir -p build 
+mv dist $package_name
+
+tar czf build/$package_name.tar.gz $package_name/
+
+rm -rf $package_name
