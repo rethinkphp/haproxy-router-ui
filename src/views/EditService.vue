@@ -31,6 +31,37 @@
                     </section>
                 </div>
                 <div>
+                    <h2>Checks</h2>
+                    <section class="checks group-control">
+                        <input 
+                            :name="'check_verb'" 
+                            type="text" 
+                            class="verb"
+                            v-model="service.check.args[0]"
+                            autocomplete="off" 
+                            placeholder="The verb"
+                        >
+                        <input 
+                            :name="'check_uri'" 
+                            type="text" 
+                            class="uri"
+                            v-model="service.check.args[1]"
+                            autocomplete="off" 
+                            placeholder="The URI"
+                        >
+                    </section>
+                    <section class="checks group-control">
+                        <input 
+                            :name="'check_version'" 
+                            type="text" 
+                            class="version"
+                            v-model="service.check.args[2]"
+                            autocomplete="off" 
+                            placeholder="The HTTP version and headers"
+                        >
+                    </section>
+                </div>
+                <div>
                     <h2>Routes</h2>
                     <section class="routes group-control" v-for="(route, index) in routes" :key="route.id">
                         <span class="no">{{index + 1}}.</span>
@@ -188,6 +219,25 @@ rightSpaceSize = 200px
         }
     }
     
+    .group-control.checks {
+        padding: 4px 0;
+
+        input {
+            display inline;
+        }
+
+        input.verb {
+            width 100px;
+        }
+        input.uri {
+            width 260px;
+            margin-left 10px
+        }
+        input.version {
+            width 500px;
+        }
+    }
+
     .group-control.routes,
     .group-control.nodes {
         padding: 4px 0;
@@ -275,7 +325,7 @@ import { Api, Service, Route, Node } from 'api'
 export default class EditService extends Vue {
     @Prop() name: string
     currentTab = 'basic';
-    service: Service = new Service()
+    service: Service = Service.populate({})
     routes: Array<Route> = []
     nodes: Array<Node> = []
 
@@ -295,7 +345,6 @@ export default class EditService extends Vue {
 
             document.title = this.service.name + ' - HAProxy Router'
         } else {
-            this.service = new Service()
             document.title = 'New Service - HAProxy Router'
         }
     }
