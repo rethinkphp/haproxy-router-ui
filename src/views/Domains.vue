@@ -59,14 +59,14 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { Api, Service } from 'api'
+import { Api, Domain} from 'api'
 
 @Component
 export default class Dashboard extends Vue {
     @Prop() name: string
     @Prop() initialEnthusiasm: number 
 
-    domains: Array<Service> = []
+    domains: Array<Domain> = []
 
     async mounted() {
         document.title = 'Domains - HAProxy Router'
