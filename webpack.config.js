@@ -2,6 +2,7 @@
 var path = require('path')
 var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var isProd = process.env.NODE_ENV === 'production'
 
 function srcPath(subdir) {
     return path.join(__dirname, "src", subdir);
@@ -12,7 +13,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/',
-    filename: '[name].[chunkhash].js'
+    filename: isProd ? '[name].[chunkhash].js' : '[name].js'
   },
   module: {
     rules: [
@@ -80,7 +81,7 @@ module.exports.plugins = [
     }),
 ];
 
-if (process.env.NODE_ENV === 'production') {
+if (isProd) {
   module.exports.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
