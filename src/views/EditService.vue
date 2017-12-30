@@ -123,6 +123,14 @@
                             autocomplete="off" 
                         >
                         <label :for="'node_check_' + index">check</label>
+                        <input 
+                            :id="'node_backup_' + index" 
+                            type="checkbox" 
+                            class="backup"
+                            v-model="node.backup"
+                            autocomplete="off" 
+                        >
+                        <label :for="'node_backup_' + index">backup</label>
                         <a class="delete" href="javascript:void(0)" @click="deleteNode(node)">x</a>
                     </section>
                     <div class="group-action clearfix">
@@ -269,7 +277,8 @@ rightSpaceSize = 200px
         input.host {
             width 250px;
         }
-        input.check {
+        input.check,
+        input.backup {
             margin-left 10px
             line-height 50px;
             width 15px 
